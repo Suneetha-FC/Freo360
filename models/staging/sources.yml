@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: bronze
+    database: FREO360_DB
+    schema: BRONZE
+    tables:
+      - name: gps_raw
+        description: "Raw GPS session data loaded from Catapult"
+        columns:
+          - name: player_id
+            description: "Unique player identifier"
+          - name: session_date
+            description: "Date of the GPS session as raw string"
+          - name: distance_m
+            description: "Total distance in metres as raw string"
+          - name: session_type
+            description: "Training or Match as raw string"
+          - name: source_file
+            description: "Source filename from METADATA$FILENAME"
