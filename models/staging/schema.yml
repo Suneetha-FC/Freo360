@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: stg_gps
+    description: "Cleaned and typed GPS session data from Catapult Bronze layer"
+    columns:
+      - name: player_id
+        description: "Unique player identifier"
+        data_tests:
+          - not_null
+      - name: session_date
+        description: "Session date properly cast to DATE"
+        data_tests:
+          - not_null
+      - name: session_type
+        description: "Training or Match"
+        data_tests:
+          - not_null
+      - name: is_valid
+        description: "FALSE if any key fields are NULL"
+        data_tests:
+          - not_null

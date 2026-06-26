@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: player_session_summary
+    description: "Valid GPS sessions per player, ready for dashboards"
+    columns:
+      - name: player_id
+        description: "Unique player identifier"
+        data_tests:
+          - not_null
+      - name: session_date
+        description: "Session date properly cast to DATE"
+        data_tests:
+          - not_null
+      - name: distance_m
+        description: "Total distance in metres"
+        data_tests:
+          - not_null
+      - name: session_type
+        description: "Training or Match"
+        data_tests:
+          - not_null
+
+  - name: high_risk_players
+    description: "Player load risk flags based on match to training ratio"
+    columns:
+      - name: player_id
+        description: "Unique player identifier"
+        data_tests:
+          - not_null
+          - unique
+      - name: load_risk_flag
+        description: "HIGH RISK, MONITOR or NORMAL"
+        data_tests:
+          - not_null
+
+  - name: team_weekly_loads
+    description: "Weekly squad load aggregates by session type"
+    columns:
+      - name: week_start
+        description: "Start of the week"
+        data_tests:
+          - not_null
+      - name: session_type
+        description: "Training or Match"
+        data_tests:
+          - not_null
